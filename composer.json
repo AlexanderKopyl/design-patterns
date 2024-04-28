@@ -1,0 +1,16 @@
+{
+    "name": "oleksandrkopyl/design-patterns",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Oleksandrkopyl\\DesignPatterns\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Oleksandr Kopyl",
+            "email": "Oleksandr_Kopyl@epam.com"
+        }
+    ],
+    "require": {}
+}

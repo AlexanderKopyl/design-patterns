@@ -2,6 +2,8 @@
 
 require 'vendor/autoload.php';
 
+use Oleksandrkopyl\DesignPatterns\Adapter\Model\AmericanAdapter;
+use Oleksandrkopyl\DesignPatterns\Adapter\Model\EuropeanSocket;
 use Oleksandrkopyl\DesignPatterns\Command\Model\ByeCommand;
 use Oleksandrkopyl\DesignPatterns\Command\Model\HelloCommand;
 use Oleksandrkopyl\DesignPatterns\Command\Model\Invoker;
@@ -65,13 +67,18 @@ use Oleksandrkopyl\DesignPatterns\Strategy\Model\QuickSortStrategy;
 // Usage: ---------- Strategy ----------
 
 // Usage: ---------- Command ----------
-$invoker = new Invoker();
-
-$command = new HelloCommand('John');
-$invoker->setCommand($command);
-$invoker->run(); // Output: John, Hello!
-
-$command = new ByeCommand('John');
-$invoker->setCommand($command);
-$invoker->run(); // Output: John, Bye!
+//$invoker = new Invoker();
+//
+//$command = new HelloCommand('John');
+//$invoker->setCommand($command);
+//$invoker->run(); // Output: John, Hello!
+//
+//$command = new ByeCommand('John');
+//$invoker->setCommand($command);
+//$invoker->run(); // Output: John, Bye!
 // Usage: ---------- Command ----------
+
+// Usage: ---------- Adapter ----------
+$adapter = new AmericanAdapter(new EuropeanSocket());
+echo "Voltage: " . $adapter->voltage() . "V\n";
+// Usage: ---------- Adapter ----------

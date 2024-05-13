@@ -2,6 +2,9 @@
 
 require 'vendor/autoload.php';
 
+use Oleksandrkopyl\DesignPatterns\Command\Model\ByeCommand;
+use Oleksandrkopyl\DesignPatterns\Command\Model\HelloCommand;
+use Oleksandrkopyl\DesignPatterns\Command\Model\Invoker;
 use Oleksandrkopyl\DesignPatterns\Decorator\Model\MilkCoffee;
 use Oleksandrkopyl\DesignPatterns\Decorator\Model\SimpleCoffee;
 use Oleksandrkopyl\DesignPatterns\Decorator\Model\WhipCoffee;
@@ -51,12 +54,24 @@ use Oleksandrkopyl\DesignPatterns\Strategy\Model\QuickSortStrategy;
 //// Usage: ------- Decorator -----------
 
 // Usage: ---------- Strategy ----------
-$dataset = array(1, 5, 4, 3, 2, 8);
+//$dataset = array(1, 5, 4, 3, 2, 8);
 
-$context = new Context(new BubbleSortStrategy());
-$result = $context->executeStrategy($dataset);
+//$context = new Context(new BubbleSortStrategy());
+//$result = $context->executeStrategy($dataset);
 
-$context = new Context(new QuickSortStrategy());
-$result = $context->executeStrategy($dataset);
+//$context = new Context(new QuickSortStrategy());
+//$result = $context->executeStrategy($dataset);
 
 // Usage: ---------- Strategy ----------
+
+// Usage: ---------- Command ----------
+$invoker = new Invoker();
+
+$command = new HelloCommand('John');
+$invoker->setCommand($command);
+$invoker->run(); // Output: John, Hello!
+
+$command = new ByeCommand('John');
+$invoker->setCommand($command);
+$invoker->run(); // Output: John, Bye!
+// Usage: ---------- Command ----------

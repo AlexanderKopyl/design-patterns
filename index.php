@@ -14,6 +14,8 @@ use Oleksandrkopyl\DesignPatterns\FactoryMethod\Model\Creator\ConcreteCreatorA;
 use Oleksandrkopyl\DesignPatterns\FactoryMethod\Model\Creator\ConcreteCreatorB;
 use Oleksandrkopyl\DesignPatterns\Observer\Model\Blog;
 use Oleksandrkopyl\DesignPatterns\Observer\Model\Subscriber;
+use Oleksandrkopyl\DesignPatterns\Prototype\Model\MathBookPrototype;
+use Oleksandrkopyl\DesignPatterns\Prototype\Model\ScienceBookPrototype;
 use Oleksandrkopyl\DesignPatterns\Strategy\Model\BubbleSortStrategy;
 use Oleksandrkopyl\DesignPatterns\Strategy\Model\Context;
 use Oleksandrkopyl\DesignPatterns\Strategy\Model\QuickSortStrategy;
@@ -79,6 +81,19 @@ use Oleksandrkopyl\DesignPatterns\Strategy\Model\QuickSortStrategy;
 // Usage: ---------- Command ----------
 
 // Usage: ---------- Adapter ----------
-$adapter = new AmericanAdapter(new EuropeanSocket());
-echo "Voltage: " . $adapter->voltage() . "V\n";
+//$adapter = new AmericanAdapter(new EuropeanSocket());
+//echo "Voltage: " . $adapter->voltage() . "V\n";
 // Usage: ---------- Adapter ----------
+
+// Usage: ---------- Prototype ----------
+$sciencePrototype = new ScienceBookPrototype();
+$mathPrototype = new MathBookPrototype();
+
+$book = clone $sciencePrototype;
+$book->setTitle('Science Book #1');
+echo $book->getTitle(); // Output: Science Book #1
+
+$book = clone $mathPrototype;
+$book->setTitle('Math Book #1');
+echo $book->getTitle(); // Output: Math Book #1
+// Usage: ---------- Prototype ----------
